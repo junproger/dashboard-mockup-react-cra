@@ -25,14 +25,3 @@
   line-height: normal;
   margin-top: 4px;
 }
-
-.backlink {
-  height: 25px;
-  color: #222;
-  font-family: Nunito;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-top: calc(790px - 174px);
-}

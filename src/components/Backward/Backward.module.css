@@ -1,0 +1,23 @@
+.backlink {
+  display: flex;
+  width: 72px;
+  height: 25px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: calc(790px - 174px);
+  padding: 0 1px;
+}
+
+.backtext {
+  color: #222;
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.backlink:hover {
+  cursor: pointer;
+}
