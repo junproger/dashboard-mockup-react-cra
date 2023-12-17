@@ -6,7 +6,7 @@ import { Nested } from '../Nested/Nested';
 export const App: FC = (): JSX.Element => {
   return (
     <div className={Styles.applayout}>
-      <Nested />
+      <Nested pgtitle="Nested Page" tstname="Test Name" />
     </div>
   );
 };
