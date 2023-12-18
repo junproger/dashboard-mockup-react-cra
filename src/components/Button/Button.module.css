@@ -1,0 +1,26 @@
+.button {
+  width: 95px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  color: #FFF;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 5px 6px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.shamrock {
+  background-color: #2EE5AC;
+}
+
+.grey49 {
+  background-color: #7D7D7D;
+}
