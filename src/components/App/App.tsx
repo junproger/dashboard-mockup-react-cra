@@ -37,7 +37,7 @@ export const App: FC = (): JSX.Element => {
   logging(getState);
   return (
     <div className={Styles.applayout}>
-      <Dashboard />
+      <Dashboard datasites={getState.sites} datatests={getState.tests} />
     </div>
   );
 };
