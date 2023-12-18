@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import Styles from './Dashboard.module.css';
+import { Noresults } from '../Noresults/Noresults';
 
 export const Dashboard: FC = (): JSX.Element => {
   const results: boolean = false;
@@ -8,11 +9,7 @@ export const Dashboard: FC = (): JSX.Element => {
     <>
       <h1 className={Styles.title}>Dashboard</h1>
       <div className={Styles.search}>Search text</div>
-      {results ? (
-        <div className={Styles.results}>Results</div>
-      ) : (
-        <div className={Styles.noresults}>Your search did not match any results.</div>
-      )}
+      {results ? <div className={Styles.results}>Results</div> : <Noresults />}
     </>
   );
 };
