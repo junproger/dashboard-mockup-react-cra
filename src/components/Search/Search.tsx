@@ -1,8 +1,12 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import Styles from './Search.module.css';
+import { logging } from '../../utils/logging';
 
 export const Search: FC = () => {
+  const inputHandler = (evnt: ChangeEvent<HTMLInputElement>): void => {
+    logging(evnt.target.value);
+  };
   return (
     <div className={Styles.search}>
       <div className={Styles.magnifier}>
@@ -15,7 +19,15 @@ export const Search: FC = () => {
           </svg>
         </div>
       </div>
-      <input className={Styles.input} aria-label="Input field" placeholder="What test are you looking for?"></input>
+      <input
+        type="text"
+        defaultValue=""
+        name="Inputfield"
+        onChange={inputHandler}
+        aria-label="Input field"
+        className={Styles.input}
+        placeholder="What test are you looking for?"
+      ></input>
       <div className={Styles.amount}>0 tests</div>
     </div>
   );
