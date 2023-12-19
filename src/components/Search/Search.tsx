@@ -1,24 +1,21 @@
-import { ChangeEvent, FC, memo, useRef } from 'react';
+import { ChangeEvent, FC, RefObject, memo } from 'react';
 
 import Styles from './Search.module.css';
 
 export type SearchProp = {
+  passingref: RefObject<HTMLInputElement>;
   callvalue: (value: string) => void;
+  resetvalue: () => void;
   amount: number;
 };
 
-const SearchMemo: FC<SearchProp> = ({ callvalue, amount }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+const SearchMemo: FC<SearchProp> = ({ passingref, callvalue, resetvalue, amount }) => {
   const inputHandler = (evnt: ChangeEvent<HTMLInputElement>): void => {
     callvalue(evnt.target.value);
   };
-  const inputReset = (): void => {
-    inputRef.current!.value = '';
-    callvalue('');
-  };
   return (
     <div className={Styles.search}>
-      <div className={Styles.magnifier} title="New Search" onClick={inputReset}>
+      <div className={Styles.magnifier} title="New Search" onClick={() => resetvalue()}>
         <div className={Styles.loupe}>
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14" fill="#222222">
             <path
@@ -30,8 +27,8 @@ const SearchMemo: FC<SearchProp> = ({ callvalue, amount }) => {
       </div>
       <input
         type="text"
-        ref={inputRef}
         defaultValue=""
+        ref={passingref}
         name="Inputfield"
         onChange={inputHandler}
         aria-label="Input field"
