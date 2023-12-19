@@ -1,6 +1,6 @@
-import { Site } from '../types/ApiTypes';
-
-export const domain = (datasites: Site[], siteid: number): string => {
-  const fullurl = datasites.find((site) => site.id === siteid)?.url as string;
-  return fullurl.replace(/^https?:\/\/w*\.?/i, '');
+export const domain = (fullurl: string): string => {
+  if (fullurl) {
+    return fullurl.replace(/^https?:\/\/w*\.?/i, '');
+  }
+  return 'Unknown domain';
 };
