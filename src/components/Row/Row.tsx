@@ -19,6 +19,7 @@ export const Row: FC<RowProp> = ({ testname, testtype, teststat, sitedata }): JS
       <div className={Styles.typecol}>{testtype.length > 3 ? lowtext(testtype) : testtype}</div>
       <div className={`${Styles.statcol} ${Styles[`stat${lowtext(teststat)}`]}`}>{lowtext(teststat)}</div>
       <div className={Styles.sitecol}>{!!sitedata && domain(sitedata.url)}</div>
+      <div className={Styles.bttncol}>{teststat === 'DRAFT' ? 'Finalize' : 'Results'}</div>
     </div>
   );
 };

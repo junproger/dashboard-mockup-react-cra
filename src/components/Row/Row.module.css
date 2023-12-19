@@ -103,3 +103,11 @@
   font-weight: 400;
   line-height: normal;
 }
+
+.bttncol {
+  display: flex;
+  width: 115px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+}
