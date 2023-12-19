@@ -7,7 +7,7 @@
   justify-content: space-between;
   background-color: #ffffff;
   border-left: 4px solid;
-  border-color: #E14165;
+  border-color: #e14165;
   border-radius: 3px;
   padding: 15px;
 }
@@ -19,15 +19,15 @@
 }
 
 .brdcolor1 {
-  border-color: #E14165;
+  border-color: #e14165;
 }
 
 .brdcolor2 {
-  border-color: #C2C2FF;
+  border-color: #c2c2ff;
 }
 
 .brdcolor3 {
-  border-color: #8686FF;
+  border-color: #8686ff;
 }
 
 .namecol {
@@ -50,7 +50,7 @@
   height: 30px;
   flex-direction: column;
   justify-content: center;
-  color: #5C5C5C;
+  color: #5c5c5c;
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
@@ -65,7 +65,7 @@
   height: 30px;
   flex-direction: column;
   justify-content: center;
-  color: #5C5C5C;
+  color: #5c5c5c;
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
@@ -75,19 +75,19 @@
 }
 
 .statdraft {
-  color: #5C5C5C;
+  color: #5c5c5c;
 }
 
 .statonline {
-  color: #1BDA9D;
+  color: #1bda9d;
 }
 
 .statpaused {
-  color: #FF8346;
+  color: #ff8346;
 }
 
-.statstopped{
-  color: #FE4848;
+.statstopped {
+  color: #fe4848;
 }
 
 .sitecol {
@@ -96,7 +96,7 @@
   height: 30px;
   flex-direction: column;
   justify-content: center;
-  color: #5C5C5C;
+  color: #5c5c5c;
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;

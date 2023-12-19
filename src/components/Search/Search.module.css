@@ -7,9 +7,9 @@
   justify-content: space-between;
   margin-top: 40px;
   border-radius: 15px;
-  border: 1px solid #EBEBEB;
-  background: #FFF;
-  color: #D1D1D1;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  color: #d1d1d1;
 }
 
 .search:focus-within {
@@ -49,7 +49,7 @@
 }
 
 .input::placeholder {
-  color: #D1D1D1;
+  color: #d1d1d1;
 }
 
 .amount {
