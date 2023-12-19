@@ -4,7 +4,7 @@ import Styles from './Button.module.css';
 
 export type ButtonProp = {
   bgcolor?: string;
-  callback: () => void;
+  callback?: () => void;
   children: ReactNode;
 };
 
