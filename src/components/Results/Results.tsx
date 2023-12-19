@@ -5,7 +5,9 @@ import { DataProp } from '../../types/DataProp';
 import { Noresults } from '../Noresults/Noresults';
 import { Row } from '../Row/Row';
 
-export const Results: FC<DataProp> = ({ datasites, datatests }): JSX.Element => {
+export type ResultProp = DataProp & { resetvalue: () => void };
+
+export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): JSX.Element => {
   return (
     <div className={Styles.results}>
       {datatests.length > 0 ? (
@@ -21,7 +23,7 @@ export const Results: FC<DataProp> = ({ datasites, datatests }): JSX.Element => 
           );
         })
       ) : (
-        <Noresults />
+        <Noresults resetvalue={resetvalue} />
       )}
     </div>
   );
