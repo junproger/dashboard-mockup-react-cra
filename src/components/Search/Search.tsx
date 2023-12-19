@@ -1,15 +1,24 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, memo, useRef } from 'react';
 
 import Styles from './Search.module.css';
-import { logging } from '../../utils/logging';
 
-export const Search: FC = () => {
+export type SearchProp = {
+  callvalue: (value: string) => void;
+  amount: number;
+};
+
+const SearchMemo: FC<SearchProp> = ({ callvalue, amount }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const inputHandler = (evnt: ChangeEvent<HTMLInputElement>): void => {
-    logging(evnt.target.value);
+    callvalue(evnt.target.value);
+  };
+  const inputReset = (): void => {
+    inputRef.current!.value = '';
+    callvalue('');
   };
   return (
     <div className={Styles.search}>
-      <div className={Styles.magnifier}>
+      <div className={Styles.magnifier} title="New Search" onClick={inputReset}>
         <div className={Styles.loupe}>
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14" fill="#222222">
             <path
@@ -21,6 +30,7 @@ export const Search: FC = () => {
       </div>
       <input
         type="text"
+        ref={inputRef}
         defaultValue=""
         name="Inputfield"
         onChange={inputHandler}
@@ -28,7 +38,9 @@ export const Search: FC = () => {
         className={Styles.input}
         placeholder="What test are you looking for?"
       ></input>
-      <div className={Styles.amount}>0 tests</div>
+      <div className={Styles.amount}>{amount} tests</div>
     </div>
   );
 };
+
+export const Search = memo(SearchMemo);
