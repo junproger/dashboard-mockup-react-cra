@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, RefObject, memo } from 'react';
 
 import Styles from './Search.module.css';
+import { logging } from '../../utils/logging';
 
 export type SearchProp = {
   passingref: RefObject<HTMLInputElement>;
@@ -10,6 +11,7 @@ export type SearchProp = {
 };
 
 const SearchMemo: FC<SearchProp> = ({ passingref, callvalue, resetvalue, amount }) => {
+  logging('THE SEARCH COMPONENT IS RENDERED', amount);
   const inputHandler = (evnt: ChangeEvent<HTMLInputElement>): void => {
     callvalue(evnt.target.value);
   };
