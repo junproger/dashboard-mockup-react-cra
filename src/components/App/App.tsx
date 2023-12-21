@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Styles from './App.module.css';
 import { endpoints } from '../../constants/endpoints';
@@ -44,7 +44,7 @@ export const App: FC = (): JSX.Element => {
         <Route path="/" element={<Dashboard datasites={getState.sites} datatests={getState.tests} />} />
         <Route path="/finalize/:id" element={<Nested pgtitle="Finalize" />} />
         <Route path="/results/:id" element={<Nested pgtitle="Results" />} />
-        <Route path="*" element={<Dashboard datasites={getState.sites} datatests={getState.tests} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
