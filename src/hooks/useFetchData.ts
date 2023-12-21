@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 
 import { logging } from '../utils/logging';
 
-export const useFetchData = <DT>(fetchurl: string, endpoint: string, callback: (data: DT, point?: string) => void) => {
+export const useFetchData = <DT>(
+  fetchurl: string,
+  endpoint: string,
+  callback: (data: DT, point?: string) => void
+): void => {
   useEffect(() => {
     const FETCHING = async () => {
       const REQUEST = fetchurl + endpoint;
