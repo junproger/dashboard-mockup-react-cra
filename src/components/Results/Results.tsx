@@ -33,6 +33,12 @@ export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): J
         datatests
           .sort(function (a, b) {
             const desc = getSort.desc;
+            if (a[getSort.sort] === 'DRAFT') {
+              return desc ? -1 : 1;
+            }
+            if (b[getSort.sort] === 'DRAFT') {
+              return desc ? 1 : -1;
+            }
             if (a[getSort.sort] > b[getSort.sort]) {
               return desc ? -1 : 1;
             }
