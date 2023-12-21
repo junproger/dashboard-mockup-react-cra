@@ -19,6 +19,7 @@ export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): J
           return (
             <Row
               key={test.id}
+              testid={`${test.id}`}
               testname={test.name}
               testtype={test.type}
               teststat={test.status}

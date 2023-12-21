@@ -1,5 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 
+import { Routes, Route } from 'react-router-dom';
+
 import Styles from './App.module.css';
 import { endpoints } from '../../constants/endpoints';
 import { fetchurl } from '../../constants/fetchurl';
@@ -7,6 +9,7 @@ import { useFetchData } from '../../hooks/useFetchData';
 import { Site, Test } from '../../types/ApiTypes';
 import { logging } from '../../utils/logging';
 import { Dashboard } from '../Dashboard/Dashboard';
+import { Nested } from '../Nested/Nested';
 
 export type AppState = {
   sites: [] | Site[];
@@ -37,7 +40,12 @@ export const App: FC = (): JSX.Element => {
   logging(getState);
   return (
     <div className={Styles.applayout}>
-      <Dashboard datasites={getState.sites} datatests={getState.tests} />
+      <Routes>
+        <Route path="/" element={<Dashboard datasites={getState.sites} datatests={getState.tests} />} />
+        <Route path="/finalize/:id" element={<Nested pgtitle="Finalize" />} />
+        <Route path="/results/:id" element={<Nested pgtitle="Results" />} />
+        <Route path="*" element={<Dashboard datasites={getState.sites} datatests={getState.tests} />} />
+      </Routes>
     </div>
   );
 };

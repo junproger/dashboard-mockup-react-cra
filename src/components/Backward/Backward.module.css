@@ -1,3 +1,7 @@
+.lnkdecor {
+  text-decoration: none;
+}
+
 .backlink {
   display: flex;
   width: 72px;
