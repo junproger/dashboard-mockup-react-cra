@@ -13,7 +13,7 @@ export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): J
   const { callsort, sortdata, sortstate } = useCustomSort(datatests);
   return (
     <div className={Styles.results}>
-      <Sort callsort={callsort} sortstate={sortstate} />
+      {!!datatests.length && <Sort callsort={callsort} sortstate={sortstate} />}
       {datatests.length > 0 ? (
         sortdata.map((test) => {
           return (
