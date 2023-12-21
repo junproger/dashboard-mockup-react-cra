@@ -1,20 +1,15 @@
 import { useEffect } from 'react';
 
-import { Site, Test } from '../types/ApiTypes';
 import { logging } from '../utils/logging';
 
-export const useFetchData = (
-  fetchurl: string,
-  endpoint: string,
-  callback: (point: string, data: Site[] | Test[]) => void
-) => {
+export const useFetchData = <DT>(fetchurl: string, endpoint: string, callback: (data: DT, point?: string) => void) => {
   useEffect(() => {
     const FETCHING = async () => {
       const REQUEST = fetchurl + endpoint;
       try {
         const RESP = await fetch(REQUEST, { method: 'GET' });
-        const DATA: Site[] | Test[] = await RESP.json();
-        callback(endpoint, DATA);
+        const DATA: DT = await RESP.json();
+        callback(DATA, endpoint);
       } catch (err) {
         logging(err);
         alert(err);

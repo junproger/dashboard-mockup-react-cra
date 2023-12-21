@@ -18,7 +18,7 @@ export type AppState = {
 
 export const App: FC = (): JSX.Element => {
   const [getState, setState] = useState<AppState>({ sites: [], tests: [] });
-  const CALLDATA = useCallback((point: string, data: Site[] | Test[]) => {
+  const CALLDATA = useCallback((data: Site[] | Test[], point?: string) => {
     if (point === endpoints.sites) {
       setState((prev) => {
         return {
@@ -35,8 +35,8 @@ export const App: FC = (): JSX.Element => {
       });
     }
   }, []);
-  useFetchData(fetchurl.distant, endpoints.sites, CALLDATA);
-  useFetchData(fetchurl.distant, endpoints.tests, CALLDATA);
+  useFetchData<Site[]>(fetchurl.distant, endpoints.sites, CALLDATA);
+  useFetchData<Test[]>(fetchurl.distant, endpoints.tests, CALLDATA);
   logging(getState);
   return (
     <div className={Styles.applayout}>
