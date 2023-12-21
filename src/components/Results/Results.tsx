@@ -39,6 +39,12 @@ export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): J
             if (b[getSort.sort] === 'DRAFT') {
               return desc ? 1 : -1;
             }
+            if (getSort.sort === SortMap.siteId && a[getSort.sort] === 1) {
+              return desc ? -1 : 1;
+            }
+            if (getSort.sort === SortMap.siteId && b[getSort.sort] === 1) {
+              return desc ? 1 : -1;
+            }
             if (a[getSort.sort] > b[getSort.sort]) {
               return desc ? -1 : 1;
             }
