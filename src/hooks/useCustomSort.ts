@@ -3,7 +3,13 @@ import { useCallback, useState } from 'react';
 import { Test } from '../types/ApiTypes';
 import { SortMap } from '../types/SortMap';
 
-export const useCustomSort = (datatests: [] | Test[]) => {
+export type SortReturn = {
+  callsort: (sort: SortMap) => void;
+  sortdata: Test[];
+  sortstate: { sort: SortMap; desc: boolean };
+};
+
+export const useCustomSort = (datatests: [] | Test[]): SortReturn => {
   const initState = { sort: SortMap.id, desc: false };
   const [getSort, setSort] = useState<{ sort: SortMap; desc: boolean }>(initState);
   const callsort = useCallback((sort: SortMap) => {
