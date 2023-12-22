@@ -5,7 +5,7 @@ import { SortMap } from '../types/SortMap';
 
 export type SortReturn = {
   callsort: (sort: SortMap) => void;
-  sortdata: Test[];
+  sorteddata: Test[];
   sortstate: { sort: SortMap; desc: boolean };
 };
 
@@ -50,7 +50,7 @@ export const useCustomSort = (datatests: [] | Test[]): SortReturn => {
   });
   return {
     callsort: callsort,
-    sortdata: sortdata,
+    sorteddata: sortdata,
     sortstate: getSort,
   };
 };
