@@ -12,17 +12,13 @@ import { Sort } from '../Sort/Sort';
 
 export const Dashboard: FC<DataProp> = ({ datasites, datatests }): JSX.Element => {
   const { inputRef, getValue, callvalue, resetvalue } = useCustomSearch();
-  const { callsort, sorteddata, sortstate } = useCustomSort(search(datatests, getValue));
+  const searchresult = search(datatests, getValue);
+  const { callsort, sorteddata, sortstate } = useCustomSort(searchresult);
   return (
     <>
       <h1 className={Styles.title}>Dashboard</h1>
-      <Search
-        passingref={inputRef}
-        callvalue={callvalue}
-        resetvalue={resetvalue}
-        amount={search(datatests, getValue).length}
-      />
-      {!!datatests.length && <Sort callsort={callsort} sortstate={sortstate} />}
+      <Search passingref={inputRef} callvalue={callvalue} resetvalue={resetvalue} amount={searchresult.length} />
+      {!!searchresult.length && <Sort callsort={callsort} sortstate={sortstate} />}
       {datatests.length > 0 ? (
         <Results datasites={datasites} datatests={sorteddata} resetvalue={resetvalue} />
       ) : (
