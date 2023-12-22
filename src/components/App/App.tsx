@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC } from 'react';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -8,32 +8,15 @@ import { fetchurl } from '../../constants/fetchurl';
 import { search } from '../../helpers/search';
 import { SearchReturn, useCustomSearch } from '../../hooks/useCustomSearch';
 import { SortReturn, useCustomSort } from '../../hooks/useCustomSort';
+import { useDataState } from '../../hooks/useDataState';
 import { useFetchData } from '../../hooks/useFetchData';
 import { Site, Test } from '../../types/ApiTypes';
-import { DataProp } from '../../types/DataProp';
 import { logging } from '../../utils/logging';
 import { Dashboard } from '../Dashboard/Dashboard';
 import { Nested } from '../Nested/Nested';
 
 export const App: FC = (): JSX.Element => {
-  const [getState, setState] = useState<DataProp>({ datasites: [], datatests: [] });
-  const CALLDATA = useCallback((data: Site[] | Test[], point?: string) => {
-    if (point === endpoints.sites) {
-      setState((prev) => {
-        return {
-          datasites: data as Site[],
-          datatests: prev.datatests,
-        };
-      });
-    } else if (point === endpoints.tests) {
-      setState((prev) => {
-        return {
-          datasites: prev.datasites,
-          datatests: data as Test[],
-        };
-      });
-    }
-  }, []);
+  const { getState, CALLDATA } = useDataState();
   useFetchData<Site[]>(fetchurl.distant, endpoints.sites, CALLDATA);
   useFetchData<Test[]>(fetchurl.distant, endpoints.tests, CALLDATA);
   const returnSearch: SearchReturn = useCustomSearch();
