@@ -1,16 +1,16 @@
-import { ChangeEvent, FC, RefObject, memo } from 'react';
+import { ChangeEvent, FC, memo } from 'react';
 
 import Styles from './Search.module.css';
 import { logging } from '../../utils/logging';
 
 export type SearchProp = {
-  passingref: RefObject<HTMLInputElement>;
   callvalue: (value: string) => void;
+  passvalue: string;
   resetvalue: () => void;
   amount: number;
 };
 
-const SearchMemo: FC<SearchProp> = ({ passingref, callvalue, resetvalue, amount }) => {
+const SearchMemo: FC<SearchProp> = ({ callvalue, passvalue, resetvalue, amount }) => {
   logging('THE SEARCH COMPONENT IS RENDERED', amount);
   const inputHandler = (evnt: ChangeEvent<HTMLInputElement>): void => {
     callvalue(evnt.target.value);
@@ -29,8 +29,7 @@ const SearchMemo: FC<SearchProp> = ({ passingref, callvalue, resetvalue, amount 
       </div>
       <input
         type="text"
-        defaultValue=""
-        ref={passingref}
+        value={passvalue}
         name="Inputfield"
         onChange={inputHandler}
         aria-label="Input field"
