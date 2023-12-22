@@ -1,21 +1,26 @@
 import { FC } from 'react';
 
 import Styles from './Dashboard.module.css';
-import { search } from '../../helpers/search';
 import { SearchReturn } from '../../hooks/useCustomSearch';
-import { useCustomSort } from '../../hooks/useCustomSort';
+import { SortReturn } from '../../hooks/useCustomSort';
+import { Test } from '../../types/ApiTypes';
 import { DataProp } from '../../types/DataProp';
 import { Loader } from '../Loader/Loader';
 import { Results } from '../Results/Results';
 import { Search } from '../Search/Search';
 import { Sort } from '../Sort/Sort';
 
-export type DashbrdProp = DataProp & { searchreturn: SearchReturn };
+export type DashbrdProp = DataProp & { searchreturn: SearchReturn; searchresult: [] | Test[]; sortreturn: SortReturn };
 
-export const Dashboard: FC<DashbrdProp> = ({ datasites, datatests, searchreturn }): JSX.Element => {
+export const Dashboard: FC<DashbrdProp> = ({
+  datasites,
+  datatests,
+  searchreturn,
+  searchresult,
+  sortreturn,
+}): JSX.Element => {
   const { getValue, callvalue, resetvalue } = searchreturn;
-  const searchresult = search(datatests, getValue);
-  const { callsort, sorteddata, sortstate } = useCustomSort(searchresult);
+  const { callsort, sorteddata, sortstate } = sortreturn;
   return (
     <>
       <h1 className={Styles.title}>Dashboard</h1>
