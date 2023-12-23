@@ -2,7 +2,6 @@ import { FC, memo } from 'react';
 
 import Styles from './Sort.module.css';
 import { SortMap } from '../../types/SortMap';
-import { logging } from '../../utils/logging';
 
 export type SortProp = {
   callsort: (sort: SortMap) => void;
@@ -10,7 +9,6 @@ export type SortProp = {
 };
 
 const SortMemo: FC<SortProp> = ({ callsort, sortstate }): JSX.Element => {
-  logging('THE SORT COMPONENT IS RENDERED', sortstate);
   const viewsort = (sort: SortMap): string => {
     if (sortstate.sort === sort && sortstate.desc === false) {
       return 'ascend';
