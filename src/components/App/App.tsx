@@ -11,7 +11,6 @@ import { SortReturn, useCustomSort } from '../../hooks/useCustomSort';
 import { useDataState } from '../../hooks/useDataState';
 import { useFetchData } from '../../hooks/useFetchData';
 import { Site, Test } from '../../types/ApiTypes';
-import { logging } from '../../utils/logging';
 import { Dashboard } from '../Dashboard/Dashboard';
 import { Nested } from '../Nested/Nested';
 
@@ -22,7 +21,6 @@ export const App: FC = (): JSX.Element => {
   const returnSearch: SearchReturn = useCustomSearch();
   const searchresult = search(getState.datatests, returnSearch.getValue);
   const returnSort: SortReturn = useCustomSort(searchresult);
-  logging(getState);
   return (
     <div className={Styles.applayout}>
       <Routes>
