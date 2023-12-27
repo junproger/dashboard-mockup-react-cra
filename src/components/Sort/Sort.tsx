@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 import Styles from './Sort.module.css';
 import { SortMap } from '../../types/SortMap';
@@ -8,7 +8,7 @@ export type SortProp = {
   sortstate: { sort: SortMap; desc: boolean };
 };
 
-const SortMemo: FC<SortProp> = ({ callsort, sortstate }): JSX.Element => {
+export const Sort: FC<SortProp> = ({ callsort, sortstate }): JSX.Element => {
   const viewsort = (sort: SortMap): string => {
     if (sortstate.sort === sort && sortstate.desc === false) {
       return 'ascend';
@@ -46,5 +46,3 @@ const SortMemo: FC<SortProp> = ({ callsort, sortstate }): JSX.Element => {
     </div>
   );
 };
-
-export const Sort = memo(SortMemo);

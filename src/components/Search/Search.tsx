@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, memo } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import Styles from './Search.module.css';
 
@@ -9,7 +9,7 @@ export type SearchProp = {
   amount: number;
 };
 
-const SearchMemo: FC<SearchProp> = ({ callvalue, passvalue, resetvalue, amount }) => {
+export const Search: FC<SearchProp> = ({ callvalue, passvalue, resetvalue, amount }) => {
   const inputHandler = (evnt: ChangeEvent<HTMLInputElement>): void => {
     callvalue(evnt.target.value);
   };
@@ -38,5 +38,3 @@ const SearchMemo: FC<SearchProp> = ({ callvalue, passvalue, resetvalue, amount }
     </div>
   );
 };
-
-export const Search = memo(SearchMemo);

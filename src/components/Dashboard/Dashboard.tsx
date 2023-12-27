@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import Styles from './Dashboard.module.css';
 import { SearchReturn } from '../../hooks/useCustomSearch';
@@ -12,7 +12,7 @@ import { Sort } from '../Sort/Sort';
 
 export type DashbrdProp = DataProp & { searchreturn: SearchReturn; searchresult: [] | Test[]; sortreturn: SortReturn };
 
-export const Dashboard: FC<DashbrdProp> = ({
+const DashboardMemo: FC<DashbrdProp> = ({
   datasites,
   datatests,
   searchreturn,
@@ -34,3 +34,5 @@ export const Dashboard: FC<DashbrdProp> = ({
     </>
   );
 };
+
+export const Dashboard = memo(DashboardMemo);
