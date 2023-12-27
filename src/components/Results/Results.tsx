@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import Styles from './Results.module.css';
 import { DataProp } from '../../types/DataProp';
@@ -7,7 +7,7 @@ import { Row } from '../Row/Row';
 
 export type ResultProp = DataProp & { resetvalue: () => void };
 
-export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): JSX.Element => {
+const ResultsMemo: FC<ResultProp> = ({ datasites, datatests, resetvalue }): JSX.Element => {
   return (
     <div className={Styles.results}>
       {datatests.length > 0 ? (
@@ -29,3 +29,5 @@ export const Results: FC<ResultProp> = ({ datasites, datatests, resetvalue }): J
     </div>
   );
 };
+
+export const Results = memo(ResultsMemo);
